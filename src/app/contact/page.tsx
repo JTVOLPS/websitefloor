@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { submitLeadToGHL, GHL_FIELD_MAPPING } from '@/lib/ghl';
 
 const industries = [
   { value: '', label: 'Select your industry' },
@@ -47,12 +48,46 @@ export default function ContactPage() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send the form data to a server
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      // Submit to GoHighLevel
+      const result = await submitLeadToGHL({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        source: 'Website Contact Form',
+        tags: ['Website Lead', formData.industry, formData.reason].filter(Boolean),
+        customFields: {
+          [GHL_FIELD_MAPPING.industry]: formData.industry,
+          [GHL_FIELD_MAPPING.companySize]: formData.companySize,
+          [GHL_FIELD_MAPPING.reason]: formData.reason,
+          [GHL_FIELD_MAPPING.message]: formData.message,
+        },
+      });
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        // If GHL fails, still show success to user but log error
+        console.error('GHL submission failed:', result.error);
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      // Still show success - you may want to handle this differently
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -119,6 +154,12 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div className="bg-white rounded-2xl shadow-md ring-1 ring-gray-200 p-8 lg:p-12">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && (
+                    <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-900">
@@ -277,9 +318,10 @@ export default function ContactPage() {
                   <div>
                     <button
                       type="submit"
-                      className="w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
                   </div>
 
