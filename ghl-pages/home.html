@@ -1,0 +1,608 @@
+<!--
+  TRADEFLOW HOME PAGE - Copy this into GHL
+  =========================================
+  This is a standalone HTML page for GoHighLevel.
+  Copy everything below into your GHL page builder.
+-->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #171717; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(to bottom, #eff6ff, #ffffff);
+    padding: 96px 24px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+  }
+  .hero h1 span { color: #2563eb; }
+  .hero p {
+    margin-top: 24px;
+    font-size: 1.125rem;
+    color: #4b5563;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #1d4ed8; }
+  .btn-secondary {
+    color: #111827;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover { color: #2563eb; }
+
+  /* Trust Badges */
+  .trust-badges {
+    margin-top: 48px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    color: #22c55e;
+  }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 900px;
+    margin: 64px auto 0;
+  }
+  @media (min-width: 640px) {
+    .stats { grid-template-columns: repeat(4, 1fr); }
+  }
+  .stat { text-align: center; }
+  .stat-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+
+  /* Industries Section */
+  .industries {
+    background: #f9fafb;
+    padding: 96px 24px;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-label {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 8px;
+  }
+  .section-desc {
+    color: #4b5563;
+    font-size: 1.125rem;
+    margin-top: 16px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .industry-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .industry-card:hover {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .industry-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .industry-icon.orange { background: linear-gradient(135deg, #f97316, #dc2626); }
+  .industry-icon.blue { background: linear-gradient(135deg, #3b82f6, #0891b2); }
+  .industry-icon.green { background: linear-gradient(135deg, #22c55e, #10b981); }
+  .industry-icon.purple { background: linear-gradient(135deg, #a855f7, #6366f1); }
+
+  .industry-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 24px;
+  }
+  .industry-card p {
+    color: #6b7280;
+    margin-top: 8px;
+  }
+  .industry-link {
+    margin-top: 16px;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Features Section */
+  .features {
+    background: white;
+    padding: 96px 24px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .feature {
+    display: flex;
+    flex-direction: column;
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .feature h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .feature p {
+    color: #6b7280;
+    margin-top: 8px;
+    line-height: 1.7;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    background: white;
+    padding: 96px 24px;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .testimonial {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+  }
+  .stars {
+    color: #fbbf24;
+    font-size: 1.25rem;
+  }
+  .testimonial-text {
+    color: #4b5563;
+    margin-top: 24px;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .testimonial-author {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  .author-name {
+    font-weight: 600;
+    color: #111827;
+    font-size: 0.875rem;
+  }
+  .author-role {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  /* CTA Section */
+  .cta {
+    background: #2563eb;
+    padding: 96px 24px;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+  }
+  .cta p {
+    color: #bfdbfe;
+    font-size: 1.125rem;
+    margin-top: 24px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-white {
+    background: white;
+    color: #2563eb;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .btn-white:hover { background: #eff6ff; }
+  .btn-ghost {
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-ghost:hover { color: #bfdbfe; }
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <h1>Grow Your Trade Business <span>with Powerful Automation</span></h1>
+    <p>The all-in-one CRM and marketing platform built specifically for roofing, HVAC, plumbing, and contracting businesses. Get more leads, close more deals, and scale faster.</p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn-secondary">
+        Watch Demo
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        No credit card required
+      </div>
+      <div class="trust-badge">
+        <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        14-day free trial
+      </div>
+      <div class="trust-badge">
+        <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        Cancel anytime
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">2,500+</div>
+        <div class="stat-label">Active businesses</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1.2M+</div>
+        <div class="stat-label">Leads generated</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">$500M+</div>
+        <div class="stat-label">Revenue influenced</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Customer satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES SECTION -->
+<section class="industries">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Specialized Solutions</div>
+      <h2 class="section-title">Built for Your Trade</h2>
+      <p class="section-desc">We understand the unique challenges of your industry. That's why we've built specialized features for each trade.</p>
+    </div>
+
+    <div class="industries-grid">
+      <a href="#roofing" class="industry-card">
+        <div class="industry-icon orange">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+        </div>
+        <h3>Roofing</h3>
+        <p>Generate more roofing leads, manage estimates, and close more jobs with tools built for roofers.</p>
+        <div class="industry-link">Learn more →</div>
+      </a>
+
+      <a href="#hvac" class="industry-card">
+        <div class="industry-icon blue">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3>HVAC</h3>
+        <p>Schedule service calls, manage maintenance contracts, and grow your HVAC business year-round.</p>
+        <div class="industry-link">Learn more →</div>
+      </a>
+
+      <a href="#plumbing" class="industry-card">
+        <div class="industry-icon green">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+        </div>
+        <h3>Plumbing</h3>
+        <p>Handle emergency calls, dispatch technicians, and build recurring revenue with ease.</p>
+        <div class="industry-link">Learn more →</div>
+      </a>
+
+      <a href="#contractors" class="industry-card">
+        <div class="industry-icon purple">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <h3>General Contractors</h3>
+        <p>Manage projects, coordinate subcontractors, and keep clients informed every step of the way.</p>
+        <div class="industry-link">Learn more →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Everything You Need</div>
+      <h2 class="section-title">Powerful Features Built for Trades</h2>
+      <p class="section-desc">From lead capture to job completion, we've got every step of your business covered with tools designed specifically for trade professionals.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          Lead Management
+        </h3>
+        <p>Capture, track, and nurture leads automatically. Never miss an opportunity with smart lead scoring and automated follow-ups.</p>
+      </div>
+
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+            </svg>
+          </div>
+          Marketing Automation
+        </h3>
+        <p>Create powerful email and SMS campaigns that convert. Schedule follow-ups, send reminders, and nurture leads on autopilot.</p>
+      </div>
+
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          Online Booking
+        </h3>
+        <p>Let customers book appointments 24/7. Sync with your calendar, send confirmations, and reduce no-shows with reminders.</p>
+      </div>
+
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+          </div>
+          Reputation Management
+        </h3>
+        <p>Build a 5-star reputation effortlessly. Automate review requests and monitor your online presence across all platforms.</p>
+      </div>
+
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          Pipeline Management
+        </h3>
+        <p>Visualize your sales process with customizable pipelines. Track every deal from first contact to closed job.</p>
+      </div>
+
+      <div class="feature">
+        <h3>
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          Reporting & Analytics
+        </h3>
+        <p>Make data-driven decisions with powerful analytics. Track ROI, conversion rates, and team performance in real-time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">Trusted by Trade Professionals</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"TradeFlow transformed our roofing business. We went from chasing leads to having them come to us. Our revenue is up 40% since we started using it."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MJ</div>
+          <div>
+            <div class="author-name">Mike Johnson</div>
+            <div class="author-role">Owner, Johnson Roofing Co.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The automated follow-ups alone have saved us 20 hours a week. Now we can focus on what we do best - fixing AC units, not managing spreadsheets."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SC</div>
+          <div>
+            <div class="author-name">Sarah Chen</div>
+            <div class="author-role">Operations Manager, CoolAir HVAC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best investment we ever made. The booking system handles our emergency calls perfectly, and the reputation management got us to 4.9 stars on Google."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DM</div>
+          <div>
+            <div class="author-name">David Martinez</div>
+            <div class="author-role">Founder, FlowRight Plumbing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Ready to Grow Your Trade Business?</h2>
+    <p>Join thousands of trade professionals who are already using TradeFlow to get more leads, close more deals, and scale their businesses.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-white">Start Free Trial</a>
+      <a href="#" class="btn-ghost">Schedule a Demo →</a>
+    </div>
+  </div>
+</section>

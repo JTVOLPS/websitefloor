@@ -1,0 +1,248 @@
+<!--
+  PRICING PAGE - Copy this into GHL
+  ==================================
+-->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #171717; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  .hero { background: linear-gradient(to bottom, #eff6ff, #ffffff); padding: 96px 24px; text-align: center; }
+  .hero h1 { font-size: 3rem; font-weight: 700; color: #111827; }
+  .hero h1 span { color: #2563eb; }
+  .hero p { margin-top: 24px; font-size: 1.125rem; color: #4b5563; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  .pricing-section { background: white; padding: 64px 24px 96px; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .pricing-card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; padding: 32px; position: relative; }
+  .pricing-card.popular { border: 2px solid #2563eb; }
+  .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #2563eb; color: white; padding: 4px 16px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+
+  .plan-name { font-size: 1.25rem; font-weight: 600; color: #111827; }
+  .plan-price { margin-top: 16px; }
+  .plan-price .amount { font-size: 3rem; font-weight: 700; color: #111827; }
+  .plan-price .period { color: #6b7280; }
+  .plan-desc { color: #6b7280; margin-top: 8px; font-size: 0.875rem; }
+
+  .plan-features { margin-top: 32px; padding-top: 32px; border-top: 1px solid #e5e7eb; }
+  .plan-features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #4b5563; font-size: 0.875rem; }
+  .plan-features li svg { flex-shrink: 0; color: #22c55e; margin-top: 2px; }
+  .plan-features li.disabled { color: #9ca3af; }
+  .plan-features li.disabled svg { color: #d1d5db; }
+
+  .plan-btn { display: block; width: 100%; margin-top: 32px; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.2s; }
+  .plan-btn.primary { background: #2563eb; color: white; }
+  .plan-btn.primary:hover { background: #1d4ed8; }
+  .plan-btn.secondary { background: #f3f4f6; color: #374151; }
+  .plan-btn.secondary:hover { background: #e5e7eb; }
+
+  .comparison { background: #f9fafb; padding: 96px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label { color: #2563eb; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; }
+  .section-title { font-size: 2.25rem; font-weight: 700; color: #111827; margin-top: 8px; }
+
+  .comparison-table { max-width: 900px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border-bottom: 1px solid #e5e7eb; }
+  .comparison-row:last-child { border-bottom: none; }
+  .comparison-row.header { background: #f9fafb; font-weight: 600; color: #111827; }
+  .comparison-cell { padding: 16px; text-align: center; font-size: 0.875rem; color: #4b5563; }
+  .comparison-cell:first-child { text-align: left; }
+  .comparison-cell .check { color: #22c55e; }
+  .comparison-cell .dash { color: #d1d5db; }
+
+  .faq { background: white; padding: 96px 24px; }
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid #e5e7eb; }
+  .faq-question { width: 100%; background: none; border: none; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1rem; font-weight: 500; color: #111827; }
+  .faq-question:hover { color: #2563eb; }
+  .faq-answer { padding-bottom: 24px; color: #6b7280; line-height: 1.7; display: none; }
+  .faq-item.open .faq-answer { display: block; }
+
+  .cta { background: #2563eb; padding: 96px 24px; text-align: center; }
+  .cta h2 { font-size: 2.25rem; font-weight: 700; color: white; }
+  .cta p { color: #bfdbfe; font-size: 1.125rem; margin-top: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { margin-top: 40px; }
+  .btn-white { background: white; color: #2563eb; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <h1>Simple, <span>Transparent Pricing</span></h1>
+    <p>Choose the plan that fits your business. No hidden fees, no surprises. Start with a 14-day free trial on any plan.</p>
+  </div>
+</section>
+
+<section class="pricing-section">
+  <div class="pricing-grid">
+    <!-- Starter Plan -->
+    <div class="pricing-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">
+        <span class="amount">$97</span>
+        <span class="period">/month</span>
+      </div>
+      <p class="plan-desc">Perfect for solo operators and small teams</p>
+      <ul class="plan-features">
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Up to 500 contacts</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Lead capture forms</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Basic automation</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Email support</li>
+        <li class="disabled"><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg> Advanced pipelines</li>
+        <li class="disabled"><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg> Phone support</li>
+      </ul>
+      <a href="#contact" class="plan-btn secondary">Start Free Trial</a>
+    </div>
+
+    <!-- Professional Plan -->
+    <div class="pricing-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <div class="plan-name">Professional</div>
+      <div class="plan-price">
+        <span class="amount">$297</span>
+        <span class="period">/month</span>
+      </div>
+      <p class="plan-desc">For growing businesses ready to scale</p>
+      <ul class="plan-features">
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Up to 5,000 contacts</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Advanced lead capture</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Full automation suite</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Custom pipelines</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Priority support</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Review management</li>
+      </ul>
+      <a href="#contact" class="plan-btn primary">Start Free Trial</a>
+    </div>
+
+    <!-- Enterprise Plan -->
+    <div class="pricing-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">
+        <span class="amount">$497</span>
+        <span class="period">/month</span>
+      </div>
+      <p class="plan-desc">For established companies with multiple teams</p>
+      <ul class="plan-features">
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Unlimited contacts</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Everything in Professional</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> White-label options</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> API access</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Dedicated account manager</li>
+        <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Custom integrations</li>
+      </ul>
+      <a href="#contact" class="plan-btn secondary">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Compare Plans</div>
+      <h2 class="section-title">Feature Comparison</h2>
+    </div>
+    <div class="comparison-table">
+      <div class="comparison-row header">
+        <div class="comparison-cell">Feature</div>
+        <div class="comparison-cell">Starter</div>
+        <div class="comparison-cell">Professional</div>
+        <div class="comparison-cell">Enterprise</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Contacts</div>
+        <div class="comparison-cell">500</div>
+        <div class="comparison-cell">5,000</div>
+        <div class="comparison-cell">Unlimited</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Team members</div>
+        <div class="comparison-cell">1</div>
+        <div class="comparison-cell">5</div>
+        <div class="comparison-cell">Unlimited</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Automation workflows</div>
+        <div class="comparison-cell">3</div>
+        <div class="comparison-cell">Unlimited</div>
+        <div class="comparison-cell">Unlimited</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Custom pipelines</div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Review management</div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">White-label</div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">API access</div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="dash">—</span></div>
+        <div class="comparison-cell"><span class="check">✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-question">Can I change plans later? <span>+</span></button>
+        <div class="faq-answer">Yes! You can upgrade or downgrade your plan at any time. When you upgrade, you'll get immediate access to new features. If you downgrade, changes take effect at the start of your next billing cycle.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Is there a contract or commitment? <span>+</span></button>
+        <div class="faq-answer">No long-term contracts. All plans are month-to-month, and you can cancel anytime. We also offer annual plans with a 20% discount if you prefer to pay upfront.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What happens after my free trial? <span>+</span></button>
+        <div class="faq-answer">After your 14-day free trial, you'll be charged for your selected plan. We'll send you a reminder email 3 days before your trial ends. If you decide not to continue, simply cancel before the trial ends—no charges.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you offer refunds? <span>+</span></button>
+        <div class="faq-answer">We offer a 30-day money-back guarantee on all plans. If you're not satisfied within the first 30 days of your paid subscription, we'll provide a full refund—no questions asked.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I get help with setup? <span>+</span></button>
+        <div class="faq-answer">All plans include access to our knowledge base and video tutorials. Professional plans include priority support, and Enterprise plans include a dedicated account manager who will help with setup and ongoing optimization.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Ready to Get Started?</h2>
+    <p>Start your 14-day free trial today. No credit card required.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-white">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple FAQ toggle
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>

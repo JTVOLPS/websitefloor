@@ -1,0 +1,189 @@
+<!--
+  ABOUT PAGE - Copy this into GHL
+  ================================
+-->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #171717; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  .hero { background: linear-gradient(to bottom, #eff6ff, #ffffff); padding: 96px 24px; text-align: center; }
+  .hero h1 { font-size: 3rem; font-weight: 700; color: #111827; }
+  .hero h1 span { color: #2563eb; }
+  .hero p { margin-top: 24px; font-size: 1.125rem; color: #4b5563; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  .mission { background: white; padding: 96px 24px; }
+  .mission-content { display: grid; grid-template-columns: 1fr; gap: 64px; max-width: 1100px; margin: 0 auto; align-items: center; }
+  @media (min-width: 1024px) { .mission-content { grid-template-columns: 1fr 1fr; } }
+  .mission-text h2 { font-size: 2rem; font-weight: 700; color: #111827; }
+  .mission-text p { color: #4b5563; margin-top: 24px; line-height: 1.8; }
+  .mission-image { background: linear-gradient(135deg, #2563eb, #7c3aed); border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; }
+  .mission-image-placeholder { color: white; font-size: 4rem; }
+
+  .stats { background: #f9fafb; padding: 96px 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 900px; margin: 0 auto; }
+  @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat { text-align: center; }
+  .stat-value { font-size: 3rem; font-weight: 700; color: #2563eb; }
+  .stat-label { color: #6b7280; margin-top: 8px; }
+
+  .story { background: white; padding: 96px 24px; }
+  .story-content { max-width: 800px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label { color: #2563eb; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; }
+  .section-title { font-size: 2.25rem; font-weight: 700; color: #111827; margin-top: 8px; }
+  .story-text { color: #4b5563; line-height: 1.8; }
+  .story-text p { margin-bottom: 24px; }
+
+  .values { background: #f9fafb; padding: 96px 24px; }
+  .values-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 768px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+  .value-card { background: white; border-radius: 16px; padding: 32px; text-align: center; }
+  .value-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #2563eb, #7c3aed); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: white; font-size: 1.5rem; }
+  .value-card h3 { font-size: 1.125rem; font-weight: 600; color: #111827; }
+  .value-card p { color: #6b7280; margin-top: 12px; line-height: 1.6; }
+
+  .team { background: white; padding: 96px 24px; }
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+  @media (min-width: 768px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+  .team-member { text-align: center; }
+  .team-avatar { width: 120px; height: 120px; background: linear-gradient(135deg, #e0e7ff, #c7d2fe); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: #4f46e5; font-size: 2.5rem; font-weight: 600; }
+  .team-name { font-weight: 600; color: #111827; }
+  .team-role { color: #6b7280; font-size: 0.875rem; margin-top: 4px; }
+
+  .cta { background: #2563eb; padding: 96px 24px; text-align: center; }
+  .cta h2 { font-size: 2.25rem; font-weight: 700; color: white; }
+  .cta p { color: #bfdbfe; font-size: 1.125rem; margin-top: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-white { background: white; color: #2563eb; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .btn-outline { background: transparent; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid white; }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <h1>Built by Trades People, <span>for Trades People</span></h1>
+    <p>We understand your business because we've been in your shoes. TradeFlow was born from real-world experience in the trades industry.</p>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="container">
+    <div class="mission-content">
+      <div class="mission-text">
+        <h2>Our Mission</h2>
+        <p>We believe trade businesses deserve the same powerful tools that big corporations have—without the complexity or the enterprise price tag.</p>
+        <p>Our mission is to help every roofer, plumber, HVAC technician, and contractor spend less time on paperwork and more time doing what they do best: serving their customers and growing their business.</p>
+      </div>
+      <div class="mission-image">
+        <div class="mission-image-placeholder">🏗️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-value">1,200+</div>
+      <div class="stat-label">Trade Businesses</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">$47M</div>
+      <div class="stat-label">Revenue Generated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">250K</div>
+      <div class="stat-label">Leads Captured</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">98%</div>
+      <div class="stat-label">Customer Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">From the Field to the Software</h2>
+    </div>
+    <div class="story-content">
+      <div class="story-text">
+        <p>TradeFlow started in 2019 when our founder, a third-generation contractor, got frustrated watching leads slip through the cracks. Between managing crews, handling estimates, and trying to keep customers happy, there was never enough time—and the existing software was either too complicated or didn't understand how trade businesses actually work.</p>
+        <p>So we built something better. We talked to hundreds of roofers, plumbers, HVAC techs, and general contractors. We learned what they actually needed—not what software companies thought they needed.</p>
+        <p>The result is TradeFlow: a CRM that speaks your language, fits your workflow, and actually helps you grow. No fancy features you'll never use. No steep learning curve. Just powerful tools that work the way you do.</p>
+        <p>Today, we're proud to serve over 1,200 trade businesses across the country. But we're just getting started. Our team is committed to building the best software for trades—period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Values</div>
+      <h2 class="section-title">What We Stand For</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h3>Simplicity First</h3>
+        <p>We believe powerful software shouldn't be complicated. Every feature we build is designed to be intuitive and easy to use.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Customer Obsessed</h3>
+        <p>Your success is our success. We're not happy unless you're seeing real results from using TradeFlow.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💪</div>
+        <h3>Built for Growth</h3>
+        <p>Whether you're a one-person operation or running multiple crews, we build tools that scale with your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Team</div>
+      <h2 class="section-title">Meet the People Behind TradeFlow</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-avatar">JM</div>
+        <div class="team-name">James Mitchell</div>
+        <div class="team-role">Founder & CEO</div>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar">SR</div>
+        <div class="team-name">Sarah Rodriguez</div>
+        <div class="team-role">Head of Product</div>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar">MK</div>
+        <div class="team-name">Michael Kim</div>
+        <div class="team-role">Head of Engineering</div>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar">AT</div>
+        <div class="team-name">Amanda Torres</div>
+        <div class="team-role">Customer Success</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Join Us?</h2>
+    <p>Start your free trial today and see why over 1,200 trade businesses trust TradeFlow to grow their business.</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn-white">Start Free Trial</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>

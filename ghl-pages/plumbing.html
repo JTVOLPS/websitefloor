@@ -1,0 +1,211 @@
+<!--
+  PLUMBING INDUSTRY PAGE - Copy this into GHL
+  ===========================================
+-->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #171717; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  .hero { background: linear-gradient(to bottom, #eff6ff, #ffffff); padding: 96px 24px; text-align: center; }
+  .hero h1 { font-size: 3rem; font-weight: 700; color: #111827; }
+  .hero h1 span { color: #2563eb; }
+  .hero p { margin-top: 24px; font-size: 1.125rem; color: #4b5563; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .hero-buttons { margin-top: 40px; display: flex; gap: 16px; justify-content: center; }
+  .btn-primary { background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .btn-secondary { color: #111827; padding: 12px 24px; text-decoration: none; font-weight: 600; }
+
+  .stats-bar { background: linear-gradient(135deg, #22c55e, #10b981); padding: 48px 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+  @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat { text-align: center; }
+  .stat-value { font-size: 2.5rem; font-weight: 700; color: white; }
+  .stat-label { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+  .features { background: white; padding: 96px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label { color: #10b981; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; }
+  .section-title { font-size: 2.25rem; font-weight: 700; color: #111827; margin-top: 8px; }
+  .section-desc { color: #4b5563; font-size: 1.125rem; margin-top: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+  @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+  .feature { padding-left: 64px; position: relative; }
+  .feature-icon { position: absolute; left: 0; top: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #22c55e, #10b981); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; }
+  .feature h3 { font-size: 1rem; font-weight: 600; color: #111827; }
+  .feature p { color: #6b7280; margin-top: 8px; line-height: 1.7; }
+
+  /* Emergency Section */
+  .emergency { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); padding: 96px 24px; }
+  .emergency-content { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; align-items: center; }
+  @media (min-width: 1024px) { .emergency-content { grid-template-columns: 1fr 1fr; } }
+  .emergency-text h2 { font-size: 2rem; font-weight: 700; color: #111827; }
+  .emergency-text p { color: #4b5563; margin-top: 16px; line-height: 1.7; }
+  .emergency-list { margin-top: 32px; }
+  .emergency-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: #4b5563; }
+  .check { color: #22c55e; font-size: 1.25rem; }
+
+  .emergency-demo { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .demo-step { display: flex; gap: 16px; padding: 16px; border-radius: 12px; margin-bottom: 12px; }
+  .demo-step.red { background: #fef2f2; }
+  .demo-step.blue { background: #eff6ff; }
+  .demo-step.green { background: #f0fdf4; }
+  .demo-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .demo-icon.red { background: #fee2e2; color: #dc2626; }
+  .demo-icon.blue { background: #dbeafe; color: #2563eb; }
+  .demo-icon.green { background: #dcfce7; color: #16a34a; }
+  .demo-text h4 { font-weight: 600; color: #111827; font-size: 0.875rem; }
+  .demo-text p { color: #6b7280; font-size: 0.875rem; }
+
+  .testimonial-section { background: white; padding: 96px 24px; text-align: center; }
+  .stars { color: #fbbf24; font-size: 2rem; margin-bottom: 32px; }
+  .quote { font-size: 1.5rem; font-weight: 500; color: #111827; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .author { margin-top: 32px; }
+  .author-name { font-weight: 600; color: #111827; }
+  .author-role { color: #6b7280; }
+
+  .other-industries { background: #f9fafb; padding: 64px 24px; text-align: center; }
+  .other-industries h3 { font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 24px; }
+  .industry-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .industry-tag { background: white; color: #374151; padding: 8px 24px; border-radius: 9999px; text-decoration: none; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+  .cta { background: #2563eb; padding: 96px 24px; text-align: center; }
+  .cta h2 { font-size: 2.25rem; font-weight: 700; color: white; }
+  .cta p { color: #bfdbfe; font-size: 1.125rem; margin-top: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { margin-top: 40px; }
+  .btn-white { background: white; color: #2563eb; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <h1>Grow Your Plumbing Business <span>with Every Call</span></h1>
+    <p>The all-in-one CRM built specifically for plumbing contractors. Capture emergency calls, dispatch technicians fast, and turn one-time customers into lifetime clients.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn-secondary">See How It Works →</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-value">45%</div><div class="stat-label">Faster emergency response</div></div>
+    <div class="stat"><div class="stat-value">28%</div><div class="stat-label">More jobs per technician</div></div>
+    <div class="stat"><div class="stat-value">$340</div><div class="stat-label">Increase in average ticket</div></div>
+    <div class="stat"><div class="stat-value">89%</div><div class="stat-label">Customer callback rate</div></div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Built for Plumbers</div>
+      <h2 class="section-title">Features That Keep You Moving</h2>
+      <p class="section-desc">From emergency calls to recurring maintenance, we've built tools specifically for plumbing businesses.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📞</div>
+        <h3>Emergency Call Handling</h3>
+        <p>Never miss an emergency call again. 24/7 automated intake captures every lead, even at 3 AM.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🗺️</div>
+        <h3>Smart Dispatch</h3>
+        <p>Get the closest available plumber to the job. GPS tracking and smart routing reduce drive time.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Service History Tracking</h3>
+        <p>Know every pipe and fixture in every home. Access complete service history before you even arrive.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💵</div>
+        <h3>Flat Rate Pricing</h3>
+        <p>Present professional flat-rate pricing on-site. Build trust and close more jobs with transparent pricing.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📹</div>
+        <h3>Drain Camera Integration</h3>
+        <p>Share inspection videos directly with customers. Show them the problem and build trust for bigger jobs.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⭐</div>
+        <h3>Membership Programs</h3>
+        <p>Build recurring revenue with plumbing memberships. Automatic billing and renewal reminders included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="emergency">
+  <div class="container">
+    <div class="emergency-content">
+      <div class="emergency-text">
+        <div class="section-label">24/7 Emergency Handling</div>
+        <h2>Never Miss Another Call</h2>
+        <p>Plumbing emergencies don't wait for business hours. Our automated system captures every call, qualifies the lead, and dispatches your team - even at 3 AM.</p>
+        <ul class="emergency-list">
+          <li><span class="check">✓</span> Automated call answering and lead capture</li>
+          <li><span class="check">✓</span> Instant technician notification via SMS</li>
+          <li><span class="check">✓</span> Customer confirmation and ETA updates</li>
+          <li><span class="check">✓</span> Complete job tracking from call to completion</li>
+        </ul>
+      </div>
+      <div class="emergency-demo">
+        <div class="demo-step red">
+          <div class="demo-icon red">🚨</div>
+          <div class="demo-text">
+            <h4>Emergency Call Received</h4>
+            <p>2:34 AM - Burst pipe reported</p>
+          </div>
+        </div>
+        <div class="demo-step blue">
+          <div class="demo-icon blue">💬</div>
+          <div class="demo-text">
+            <h4>Customer Notified</h4>
+            <p>Confirmation SMS sent automatically</p>
+          </div>
+        </div>
+        <div class="demo-step green">
+          <div class="demo-icon green">✓</div>
+          <div class="demo-text">
+            <h4>Technician Dispatched</h4>
+            <p>Mike R. - ETA 25 minutes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="container">
+    <div class="stars">★★★★★</div>
+    <p class="quote">"The emergency call handling is incredible. We used to miss half our after-hours calls. Now we capture every single one, and our revenue is up 60% in just 6 months."</p>
+    <div class="author">
+      <div class="author-name">David Martinez</div>
+      <div class="author-role">Founder, FlowRight Plumbing</div>
+    </div>
+  </div>
+</section>
+
+<section class="other-industries">
+  <h3>We also serve other trades</h3>
+  <div class="industry-tags">
+    <a href="#roofing" class="industry-tag">Roofing</a>
+    <a href="#hvac" class="industry-tag">HVAC</a>
+    <a href="#contractors" class="industry-tag">General Contractors</a>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Ready to Grow Your Plumbing Business?</h2>
+    <p>Join hundreds of plumbing contractors who are already using TradeFlow to capture more emergency calls and grow their business.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-white">Start Free Trial</a>
+    </div>
+  </div>
+</section>

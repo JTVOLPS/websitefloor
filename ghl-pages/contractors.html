@@ -1,0 +1,247 @@
+<!--
+  CONTRACTORS INDUSTRY PAGE - Copy this into GHL
+  ==============================================
+-->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #171717; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  .hero { background: linear-gradient(to bottom, #eff6ff, #ffffff); padding: 96px 24px; text-align: center; }
+  .hero h1 { font-size: 3rem; font-weight: 700; color: #111827; }
+  .hero h1 span { color: #2563eb; }
+  .hero p { margin-top: 24px; font-size: 1.125rem; color: #4b5563; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .hero-buttons { margin-top: 40px; display: flex; gap: 16px; justify-content: center; }
+  .btn-primary { background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .btn-secondary { color: #111827; padding: 12px 24px; text-decoration: none; font-weight: 600; }
+
+  .stats-bar { background: linear-gradient(135deg, #a855f7, #6366f1); padding: 48px 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+  @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat { text-align: center; }
+  .stat-value { font-size: 2.5rem; font-weight: 700; color: white; }
+  .stat-label { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+  .features { background: white; padding: 96px 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-label { color: #7c3aed; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; }
+  .section-title { font-size: 2.25rem; font-weight: 700; color: #111827; margin-top: 8px; }
+  .section-desc { color: #4b5563; font-size: 1.125rem; margin-top: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+  @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+  .feature { padding-left: 64px; position: relative; }
+  .feature-icon { position: absolute; left: 0; top: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #a855f7, #6366f1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+  .feature h3 { font-size: 1rem; font-weight: 600; color: #111827; }
+  .feature p { color: #6b7280; margin-top: 8px; line-height: 1.7; }
+
+  /* Pipeline Section */
+  .pipeline { background: linear-gradient(135deg, #faf5ff, #eef2ff); padding: 96px 24px; }
+  .pipeline-visual { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 48px auto 0; }
+  @media (min-width: 768px) { .pipeline-visual { grid-template-columns: repeat(4, 1fr); } }
+  .pipeline-stage { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .pipeline-stage h4 { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 12px; display: flex; justify-content: space-between; }
+  .pipeline-stage h4 span { color: #6b7280; font-weight: 400; }
+  .pipeline-item { background: #f9fafb; border-radius: 8px; padding: 12px; margin-bottom: 8px; border: 1px solid #e5e7eb; }
+  .pipeline-item .bar { height: 8px; background: #e5e7eb; border-radius: 4px; margin-bottom: 8px; }
+  .pipeline-item .bar-sm { height: 6px; background: #f3f4f6; border-radius: 3px; width: 60%; }
+
+  /* Client Portal */
+  .client-portal { background: white; padding: 96px 24px; }
+  .portal-content { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; align-items: center; }
+  @media (min-width: 1024px) { .portal-content { grid-template-columns: 1fr 1fr; } }
+  .portal-text ul { margin-top: 32px; }
+  .portal-text li { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: #4b5563; }
+  .check { color: #a855f7; font-size: 1.25rem; }
+  .portal-demo { background: #f9fafb; border-radius: 16px; padding: 32px; }
+  .portal-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .portal-header { background: #7c3aed; color: white; padding: 12px 16px; font-weight: 500; font-size: 0.875rem; }
+  .portal-body { padding: 16px; }
+  .progress-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; margin-bottom: 16px; }
+  .progress-label { font-size: 0.875rem; }
+  .progress-label span { font-weight: 600; color: #111827; }
+  .progress-label small { color: #6b7280; }
+  .progress-value { font-size: 1.5rem; font-weight: 700; color: #7c3aed; }
+  .task-list { font-size: 0.875rem; }
+  .task { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .task.done { color: #16a34a; }
+  .task.progress { color: #2563eb; }
+  .task.pending { color: #9ca3af; }
+
+  .testimonial-section { background: #f9fafb; padding: 96px 24px; text-align: center; }
+  .stars { color: #fbbf24; font-size: 2rem; margin-bottom: 32px; }
+  .quote { font-size: 1.5rem; font-weight: 500; color: #111827; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .author { margin-top: 32px; }
+  .author-name { font-weight: 600; color: #111827; }
+  .author-role { color: #6b7280; }
+
+  .other-industries { background: white; padding: 64px 24px; text-align: center; }
+  .other-industries h3 { font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 24px; }
+  .industry-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .industry-tag { background: #f3f4f6; color: #374151; padding: 8px 24px; border-radius: 9999px; text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+
+  .cta { background: #2563eb; padding: 96px 24px; text-align: center; }
+  .cta h2 { font-size: 2.25rem; font-weight: 700; color: white; }
+  .cta p { color: #bfdbfe; font-size: 1.125rem; margin-top: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { margin-top: 40px; }
+  .btn-white { background: white; color: #2563eb; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <h1>Grow Your Contracting Business <span>with Total Control</span></h1>
+    <p>The all-in-one CRM built specifically for general contractors. Manage projects, coordinate subs, and keep clients informed from first call to final walkthrough.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn-secondary">See How It Works →</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-value">35%</div><div class="stat-label">Improvement in project delivery</div></div>
+    <div class="stat"><div class="stat-value">50%</div><div class="stat-label">Reduction in admin time</div></div>
+    <div class="stat"><div class="stat-value">2x</div><div class="stat-label">Better bid-to-win ratio</div></div>
+    <div class="stat"><div class="stat-value">4.9/5</div><div class="stat-label">Client satisfaction score</div></div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Built for Contractors</div>
+      <h2 class="section-title">Features That Keep Projects on Track</h2>
+      <p class="section-desc">From bid to completion, we've built tools specifically for the way general contractors work.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Project Management</h3>
+        <p>Track every project from bid to completion. Milestones, timelines, and budgets all in one place.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👥</div>
+        <h3>Subcontractor Coordination</h3>
+        <p>Manage your network of subs. Schedule, communicate, and track all your subcontractor relationships.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Client Communication Portal</h3>
+        <p>Keep clients informed with automated updates. Photo sharing, progress reports, and messaging in one place.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Bid & Estimate Management</h3>
+        <p>Create professional bids fast. Track win rates and optimize your pricing strategy.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📁</div>
+        <h3>Document Management</h3>
+        <p>Contracts, permits, plans, and photos organized and accessible. Never lose an important document again.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✏️</div>
+        <h3>Change Order Tracking</h3>
+        <p>Document and approve change orders digitally. Protect your margins and avoid disputes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pipeline">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Visual Project Pipeline</div>
+      <h2 class="section-title">See Every Project at a Glance</h2>
+      <p class="section-desc">Drag-and-drop project management that shows you exactly where everything stands.</p>
+    </div>
+    <div class="pipeline-visual">
+      <div class="pipeline-stage">
+        <h4>Lead <span>4</span></h4>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+      </div>
+      <div class="pipeline-stage">
+        <h4>Bid Sent <span>3</span></h4>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+      </div>
+      <div class="pipeline-stage">
+        <h4>In Progress <span>2</span></h4>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+      </div>
+      <div class="pipeline-stage">
+        <h4>Completed <span>1</span></h4>
+        <div class="pipeline-item"><div class="bar"></div><div class="bar-sm"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="client-portal">
+  <div class="container">
+    <div class="portal-content">
+      <div class="portal-text">
+        <div class="section-label">Client Portal</div>
+        <h2 class="section-title">Keep Clients in the Loop</h2>
+        <p class="section-desc" style="margin-left:0; text-align:left;">Happy clients come from great communication. Our client portal keeps homeowners informed without you spending hours on the phone.</p>
+        <ul>
+          <li><span class="check">✓</span> Automatic progress updates</li>
+          <li><span class="check">✓</span> Photo and video sharing</li>
+          <li><span class="check">✓</span> Digital document signing</li>
+          <li><span class="check">✓</span> Change order approval workflow</li>
+        </ul>
+      </div>
+      <div class="portal-demo">
+        <div class="portal-card">
+          <div class="portal-header">Client Portal - Smith Kitchen Renovation</div>
+          <div class="portal-body">
+            <div class="progress-row">
+              <div class="progress-label"><span>Project Progress</span><br><small>Updated 2 hours ago</small></div>
+              <div class="progress-value">68%</div>
+            </div>
+            <div class="task-list">
+              <div class="task done">✓ Demo complete</div>
+              <div class="task done">✓ Electrical rough-in</div>
+              <div class="task progress">◐ Cabinet installation (in progress)</div>
+              <div class="task pending">○ Countertop installation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="container">
+    <div class="stars">★★★★★</div>
+    <p class="quote">"Managing multiple renovation projects used to be chaos. Now everything is organized, my clients are happier, and I can actually take weekends off."</p>
+    <div class="author">
+      <div class="author-name">Jennifer Williams</div>
+      <div class="author-role">President, Williams Construction</div>
+    </div>
+  </div>
+</section>
+
+<section class="other-industries">
+  <h3>We also serve other trades</h3>
+  <div class="industry-tags">
+    <a href="#roofing" class="industry-tag">Roofing</a>
+    <a href="#hvac" class="industry-tag">HVAC</a>
+    <a href="#plumbing" class="industry-tag">Plumbing</a>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Ready to Grow Your Contracting Business?</h2>
+    <p>Join hundreds of general contractors who are already using TradeFlow to manage projects and keep clients happy.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-white">Start Free Trial</a>
+    </div>
+  </div>
+</section>
